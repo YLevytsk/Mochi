@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Подключаем Normalize CSS для улучшенной совместимости между браузерами -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <!-- Подключение Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Подключаем шрифты Josefin Slab и Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Подключаем внешний CSS файл для стилей -->
+
+    <title>Mochi - Japanese Desserts</title>
+  </head>
+  <body>
+    <header id="main-header" class="header" style="background-image: url('your-image.jpg'); width: 1440px; height: 670px; background-size: cover; position: relative;">
+        <div class="header-content">
+            <!-- Логотип сайта (заменить на ваш SVG) -->
+            <div class="logo" id="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                    <!-- Пример кода для SVG логотипа -->
+                    <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="white" />
+                </svg>
+            </div>
+
+            <!-- Название сайта и подзаголовок -->
+            <h1 class="site-title" id="site-title">Mochi</h1>
+            <p class="tagline" id="tagline">Japanese Desserts</p>
+
+            <!-- Кнопка "Order Now" -->
+            <button class="order-btn" id="order-btn">Order Now</button>
+
+            <!-- Меню навигации -->
+            <nav id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#shop" class="nav-link">Shop</a></li>
+                    <li><a href="#reviews" class="nav-link">Reviews</a></li>
+                    <li><a href="#about" class="nav-link">About Mochi</a></li>
+                    <li><a href="#partnership" class="nav-link">Partnership</a></li>
+                    <li><a href="#contacts" class="nav-link">Contacts</a></li>
+                </ul>
+            </nav>
+
+            <!-- Иконки в правом верхнем углу -->
+            <div class="icons" id="icons">
+                <a href="#search" class="icon search" id="search-icon"></a> <!-- Иконка поиска -->
+                <a href="#account" class="icon account" id="account-icon"></a> <!-- Иконка личного кабинета -->
+                <a href="#cart" class="icon cart" id="cart-icon"></a> <!-- Иконка корзины -->
+            </div>
+        </div>
+    </header>
+    
+    <!-- Подключаем внешний JS файл -->
+    <script src="main.js"></script>
+  </body>
+</html>
