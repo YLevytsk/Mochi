@@ -42,8 +42,6 @@ screen and (min-resolution: 2dppx) {
     height: 100%;
   }
   
- 
-  
   .logo-img {
     width: 85px; /* Ширина изображения */
     height: 78px; /* Высота изображения */
