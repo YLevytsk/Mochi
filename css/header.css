@@ -2,7 +2,7 @@
     header {
       width: 100%;
       height: 770px; /* Устанавливаем высоту хедера */
-      background-image: url('../images/header-bg.jpg'); /* Укажите путь к вашему изображению */
+      background-image: url('./images/mochi.jpg'); /* Укажите путь к вашему изображению */
       background-size: cover; /* Фоновое изображение растягивается по размеру контейнера */
       background-position: center; /* Центрируем фоновое изображение */
       background-repeat: no-repeat; /* Изображение не повторяется */
@@ -20,6 +20,6 @@ screen and (min-resolution: 2dppx) {
         background-image: linear-gradient(to bottom, 
                 rgba(17, 17, 17, 0.4), 
                 rgba(17, 17, 17, 0.4)),
-            url(../images/chocolate_main-1x-desk.webp);  /* Фон для экранов с высокой плотностью пикселей */
+            url(./images/mochi.webp);  /* Фон для экранов с высокой плотностью пикселей */
     }
 }
