@@ -6,7 +6,7 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: '/goit-js-hw-12/',  // Если проект развернут в подкаталоге
+    base: '/Mochi/',  // Если проект развернут в подкаталоге
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
