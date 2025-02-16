@@ -48,7 +48,7 @@ screen and (min-resolution: 2dppx) {
     object-fit: contain; /* Сохраняет пропорции изображения */
   }
   .title {
-    font-family: var(--third-family);
+    font-family: var(--primary-font);
     font-weight: 700;
     font-size: 128px;
     text-transform: uppercase;
