@@ -4,8 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "lite-server",  // Здесь указывается команда для запуска
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "echo \"Development server is running...\""
   },
   "keywords": [],
   "author": "Yuliia Levytska <lupin773311asd@gmail.com>",
