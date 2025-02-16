@@ -47,10 +47,17 @@ screen and (min-resolution: 2dppx) {
     height: 78px; /* Высота изображения */
     object-fit: contain; /* Сохраняет пропорции изображения */
   }
-  .title {
+  .section-title {
     font-family: var(--primary-font);
     font-weight: 700;
     font-size: 128px;
+    text-transform: uppercase;
+    color: #000;
+  }
+  .name{
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    font-size: 64px;
     text-transform: uppercase;
     color: #000;
   }
