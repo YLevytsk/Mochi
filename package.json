@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "http-server ./ -p 3000",  // Запускаем http-server на порту 3000
+    "dev": "http-server ./ -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
