@@ -1,9 +1,14 @@
 :root {
-    /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
-    font-family: 'Josefin Slab', serif, 'Poppins', sans-serif;
+    /* Определение шрифтов для использования в проекте */
+    --primary-font: 'Josefin Slab', serif;
+    --secondary-font: 'Poppins', sans-serif;
+
+    font-family: var(--primary-font), var(--secondary-font), sans-serif;
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
+
+
 
     color: #242424;
     background-color: rgba(255, 255, 255, 0.87);
