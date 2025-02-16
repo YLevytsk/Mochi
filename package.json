@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "modern-normalize": "^3.0.1"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
   }
 }
