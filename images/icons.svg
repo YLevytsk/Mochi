@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
-    <!-- Спрайт для вашего логотипа Mochi -->
     <symbol id="icon-Mochi" viewBox="0 0 153 119">
       <g clip-path="url(#clip0_127_89)">
         <path d="M119.244 0H33.7557V78H119.244V0Z" fill="url(#pattern0_127_89)" />
