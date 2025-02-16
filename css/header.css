@@ -2,7 +2,7 @@
     header {
       width: 100%;
       height: 770px; /* Устанавливаем высоту хедера */
-      background-image: url('./images/mochi.jpg'); /* Укажите путь к вашему изображению */
+      background-image: url('./images/mochi.webp'); /* Укажите путь к вашему изображению */
       background-size: cover; /* Фоновое изображение растягивается по размеру контейнера */
       background-position: center; /* Центрируем фоновое изображение */
       background-repeat: no-repeat; /* Изображение не повторяется */
