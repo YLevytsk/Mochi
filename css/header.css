@@ -23,3 +23,30 @@ screen and (min-resolution: 2dppx) {
             url(./images/mochi.webp);  /* Фон для экранов с высокой плотностью пикселей */
     }
 }
+.logo {
+    position: absolute; /* Позиционируем элемент относительно окна или родительского контейнера */
+    top: 0; /* Выравнивание по верхнему краю */
+    left: 0; /* Выравнивание по левому краю */
+    width: 153px; /* Ширина логотипа */
+    height: 119px;
+    top: 34px; /* Отступ от верхнего края страницы */
+    left: 105px;/* Высота логотипа */
+  }
+  
+  .soc_nets_link {
+    display: flex;
+    flex-direction: column; /* Располагаем SVG и изображение вертикально */
+    align-items: center; /* Центрируем элементы внутри контейнера */
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+ 
+  
+  .logo-img {
+    width: 85px; /* Ширина изображения */
+    height: 78px; /* Высота изображения */
+    object-fit: contain; /* Сохраняет пропорции изображения */
+  }
+  
