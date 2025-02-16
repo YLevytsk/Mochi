@@ -1,0 +1,17 @@
+{
+  "name": "mochi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "lite-server",  // Здесь указывается команда для запуска
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Yuliia Levytska <lupin773311asd@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
+  }
+}
+
