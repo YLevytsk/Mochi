@@ -1,26 +1,28 @@
 {
   "name": "mochi",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "type": "module",
   "scripts": {
-    "dev": "lite-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "lite-server --no-open -p 3000",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "Yuliia Levytska <lupin773311asd@gmail.com>",
-  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.4.6",
+    "lite-server": "^2.5.4",
+    "glob": "^11.0.0",
+    "postcss": "^8.4.41",
+    "postcss-sort-media-queries": "^5.2.0"
+  },
   "dependencies": {
     "axios": "^1.7.9",
     "css-loader": "^7.1.2",
     "izitoast": "^1.4.0",
-    "modern-normalize": "^3.0.1",
     "simplelightbox": "^2.14.3",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   },
-  "devDependencies": {
-    "lite-server": "^2.6.1",
-    "vite": "^6.1.0"
-  }
+  "author": "Yuliia Levytska <lupin773311asd@gmail.com>",
+  "license": "ISC"
 }
