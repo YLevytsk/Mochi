@@ -3,10 +3,9 @@
       width: 100%;
       height: 770px; /* Устанавливаем высоту хедера */
       background-image: url('../images/mochi.webp'); /* Укажите путь к вашему изображению */
-      background-size: cover; /* Фоновое изображение растягивается по размеру контейнера */
+      box-sizing: border-box; /* Фоновое изображение растягивается по размеру контейнера */
       background-position: center; /* Центрируем фоновое изображение */
       background-repeat: no-repeat;
-      /* Изображение не повторяется */
       display: flex; /* Используем flexbox для расположения элементов */
       justify-content: center; /* Центрируем содержимое по горизонтали */
       align-items: center; /* Центрируем содержимое по вертикали */
