@@ -73,4 +73,7 @@ screen and (min-resolution: 2dppx) {
     margin-top: 40px;
     padding: 0;
     margin-bottom: 34px;
+    position: relative;
+    top: 132px; /* Отступ сверху */
+    left: 103px;
   }
