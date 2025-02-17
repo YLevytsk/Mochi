@@ -1,5 +1,5 @@
 @media screen and (min-width: 1440px) {
-    .header {
+  .header-container{
       width: 100%;
       height: 770px; /* Устанавливаем высоту хедера */
       background-image: url('./images/mochi.webp'); /* Укажите путь к вашему изображению */
