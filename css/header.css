@@ -5,11 +5,12 @@
       background-image: url('./images/mochi.webp'); /* Укажите путь к вашему изображению */
       background-size: cover; /* Фоновое изображение растягивается по размеру контейнера */
       background-position: center; /* Центрируем фоновое изображение */
-      background-repeat: no-repeat; /* Изображение не повторяется */
+      background-repeat: no-repeat;
+      /* Изображение не повторяется */
       display: flex; /* Используем flexbox для расположения элементов */
       justify-content: center; /* Центрируем содержимое по горизонтали */
       align-items: center; /* Центрируем содержимое по вертикали */
-      padding: 0 16px;
+     
     }
   }
   
@@ -53,6 +54,8 @@ screen and (min-resolution: 2dppx) {
     font-size: 128px;
     text-transform: uppercase;
     color: #000;
+     margin-top: 88px;
+
   }
   .name{
     font-family: var(--secondary-font);
