@@ -2,7 +2,7 @@
   .header-container{
       width: 100%;
       height: 770px; /* Устанавливаем высоту хедера */
-      background-image: url('./images/mochi.webp'); /* Укажите путь к вашему изображению */
+      background-image: url('../images/mochi.webp'); /* Укажите путь к вашему изображению */
       background-size: cover; /* Фоновое изображение растягивается по размеру контейнера */
       background-position: center; /* Центрируем фоновое изображение */
       background-repeat: no-repeat;
@@ -21,7 +21,7 @@ screen and (min-resolution: 2dppx) {
         background-image: linear-gradient(to bottom, 
                 rgba(17, 17, 17, 0.4), 
                 rgba(17, 17, 17, 0.4)),
-            url(./images/mochi.webp);  /* Фон для экранов с высокой плотностью пикселей */
+            url(../images/mochi.webp);  /* Фон для экранов с высокой плотностью пикселей */
     }
 }
 .logo {
