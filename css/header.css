@@ -64,7 +64,7 @@ screen and (min-resolution: 2dppx) {
     text-transform: uppercase;
     color: #000;
   }
-  .nav-list {
+  .navigation {
     display: flex;
     flex-direction: column;
     justify-content: left;
