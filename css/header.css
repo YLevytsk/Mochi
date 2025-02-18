@@ -73,12 +73,13 @@ screen and (min-resolution: 2dppx) {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    align-items: center;
+    
     list-style: none;
     margin-top: 40px;
     padding: 0;
     margin-bottom: 34px;
     position: relative;
-    top: 132px; /* Отступ сверху */
+    top: 132px; 
     left: 103px;
+    align-items: flex-start;
   }
