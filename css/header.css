@@ -85,12 +85,13 @@ screen and (min-resolution: 2dppx) {
     align-items: flex-start;
   }
   .text-nav-container {
-    display: flex; /* Используем flexbox для размещения элементов в ряд */
-    justify-content: space-between; /* Распределяем пространство между элементами */
-    align-items: center; /* Выравниваем элементы по вертикали */
+    display: flex; 
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center; 
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: 103px; /* Отступ слева */
-    padding-top: 132px;  /* Устанавливаем ширину в 100%, чтобы контейнер занимал всю доступную ширину */
+    margin-left: 103px; 
+    padding-top: 132px;  
   }
