@@ -36,7 +36,8 @@ screen and (min-resolution: 2dppx) {
   .header-container {
     display: flex; /* Используем флексбокс */
     justify-content: space-between; /* Распределяем пространство между элементами */
-    align-items: center; /* Центрируем элементы по вертикали */
+    align-items: center; 
+    align-items: flex-start;/* Центрируем элементы по вертикали */
   }
   
   .soc_nets_link {
@@ -73,7 +74,7 @@ screen and (min-resolution: 2dppx) {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    
+    position: absolute;
     list-style: none;
     margin-top: 40px;
     padding: 0;
