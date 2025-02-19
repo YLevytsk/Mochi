@@ -97,3 +97,10 @@ screen and (min-resolution: 2dppx) {
     text-transform: uppercase;
     color: #3e3434;
   }
+  .nav-list{
+    display: flex; /* Используем флексбокс для расположения элементов в строку */
+    flex-direction: column; /* Элементы списка будут выстраиваться в колонку */
+    gap: 34px; /* Устанавливаем отступ между элементами списка */
+    padding: 0;
+    margin: 0;
+  }
