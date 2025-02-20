@@ -125,7 +125,8 @@ screen and (min-resolution: 2dppx) {
     z-index: -1;
   }
   .nav-link:hover::before {
-    opacity: 1; /* Фон появляется при ховере */
+    opacity: 1;
+    transform: scaleX(1);/* Фон появляется при ховере */
   }
   .header-text {
     margin-right: 116px; /* Отступ справа от края страницы */
