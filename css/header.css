@@ -60,7 +60,8 @@ screen and (min-resolution: 2dppx) {
     font-size: 128px;
     text-transform: uppercase;
     color: #000;
-     margin-top: 88px;
+    
+  
 
   }
   .tagline{
@@ -79,6 +80,7 @@ screen and (min-resolution: 2dppx) {
     position: relative;
     left: 103px;
     align-items: flex-start;
+    margin-top: 28px;
   }
   .text-nav-wrapper {
     display: flex; 
@@ -88,6 +90,7 @@ screen and (min-resolution: 2dppx) {
     position: absolute;
     margin-top: 144px;
     width: 100%;
+    row-gap: 321px;
   }
   .nav-link{
     font-family: var(--secondary-font);
@@ -104,3 +107,28 @@ screen and (min-resolution: 2dppx) {
     padding: 0;
     margin: 0;
   }
+  .header-text {
+    margin-right: 116px; /* Отступ справа от края страницы */
+  }
+  .order-btn{
+    font-family: var(--secondary-font);
+    border: 1px solid #932b82;
+    padding: 9px 36px;
+    width: 141px;
+    height: 38px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.7s ease, transform 0.7s ease;   
+  }
+  .order-btn:hover,
+.order-btn:focus {
+  background-color: #E86868; /* Цвет кнопки при ховере и фокусе */
+   /* Легкое увеличение кнопки при ховере */
+}
