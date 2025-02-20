@@ -101,7 +101,8 @@ screen and (min-resolution: 2dppx) {
     color: #3e3434;
     width: 295px; /* Ширина элемента меню */
     height: 60px; /* Высота элемента меню */
-    overflow: hidden; 
+    overflow: hidden;
+    position: relative;
   }
   .nav-list{
     display: flex; /* Используем флексбокс для расположения элементов в строку */
@@ -111,21 +112,20 @@ screen and (min-resolution: 2dppx) {
     margin: 0;
   }
   .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
+    content: ''; /* Псевдо-элемент без текста */
+    position: absolute; /* Позиционируем его относительно родителя */
     left: 0;
-    width: 100%; /* Ширина фона равна ширине элемента */
-    height: 100%; /* Высота фона равна высоте элемента */
+    bottom: 0; /* Располагаем его снизу */
+    width: 100%; /* Ширина фона — 100% от ширины родителя */
+    height: 100%; /* Высота фона — 100% от высоты родителя */
     background-color: #E86868; /* Цвет фона */
-    transform: scaleY(0); /* Изначально фон скрыт */
-    transform-origin: bottom center; /* Фон будет увеличиваться вверх */
-    transition: transform 0.3s ease; /* Плавный переход */
+    opacity: 0; /* Изначально фон скрыт */
+    transition: opacity 0.3s ease; /* Плавное появление фона */
   }
-  .nav-link:hover::after, 
-.nav-link:focus::after {
-  transform: scaleY(1); /* Фон появляется при ховере или фокусе */
-}
+  
+  .nav-link:hover::after {
+    opacity: 1; /* При ховере фон становится видимым */
+  }
   .header-text {
     margin-right: 116px; /* Отступ справа от края страницы */
   }
