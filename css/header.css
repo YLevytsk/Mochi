@@ -103,6 +103,10 @@ screen and (min-resolution: 2dppx) {
     height: 60px; /* Высота элемента меню */
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;  /* Центрируем текст по вертикали */
+    justify-content: left;
+    padding-left: 16px;
     
   }
   .nav-list{
@@ -121,7 +125,7 @@ screen and (min-resolution: 2dppx) {
     height: 100%; /* Высота фона равна высоте родительского элемента */
     background-color: #E86868; /* Цвет фона при ховере */
     opacity: 0; /* Изначально фон скрыт */
-    transition: opacity 0.3s ease; /* Плавное изменение прозрачности */
+    transition: opacity 0.7s ease, transform 0.7s ease;  /* Плавное изменение прозрачности */
     z-index: -1;
   }
   .nav-link:hover::before {
