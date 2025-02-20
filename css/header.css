@@ -103,6 +103,7 @@ screen and (min-resolution: 2dppx) {
     height: 60px; /* Высота элемента меню */
     overflow: hidden;
     position: relative;
+    display: flex;
   }
   .nav-list{
     display: flex; /* Используем флексбокс для расположения элементов в строку */
