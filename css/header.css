@@ -107,6 +107,19 @@ screen and (min-resolution: 2dppx) {
     padding: 0;
     margin: 0;
   }
+  .nav-link::after {
+    content: ""; /* Создаем пустой элемент */
+    position: absolute;
+    bottom: 0; /* Помещаем фон в нижнюю часть элемента */
+    left: 0;
+    width: 100%; /* Ширина фона — вся ширина элемента */
+    height: 4px; /* Высота фона */
+    background-color: #E86868; /* Цвет фона */
+    transform: scaleX(0); /* Начальное состояние фона скрыто */
+    transform-origin: bottom right; /* Начало анимации от правого нижнего угла */
+    transition: transform 0.3s ease; /* Плавный переход */
+  }
+
   .header-text {
     margin-right: 116px; /* Отступ справа от края страницы */
   }
