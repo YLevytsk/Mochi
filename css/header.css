@@ -113,18 +113,18 @@ screen and (min-resolution: 2dppx) {
   }
   .nav-link::after {
     content: ''; /* Псевдо-элемент без текста */
-    position: absolute; /* Позиционируем его относительно родителя */
+    position: absolute;
+    top: 0;
     left: 0;
-    bottom: 0; /* Располагаем его снизу */
-    width: 100%; /* Ширина фона — 100% от ширины родителя */
-    height: 100%; /* Высота фона — 100% от высоты родителя */
-    background-color: #E86868; /* Цвет фона */
+    width: 100%; /* Ширина фона равна ширине родительского элемента */
+    height: 100%; /* Высота фона равна высоте родительского элемента */
+    background-color: #E86868; /* Цвет фона при ховере */
     opacity: 0; /* Изначально фон скрыт */
-    transition: opacity 0.3s ease; /* Плавное появление фона */
+    transition: opacity 0.3s ease; /* Плавное изменение прозрачности */
+    z-index: -1;
   }
-  
-  .nav-link:hover::after {
-    opacity: 1; /* При ховере фон становится видимым */
+  .nav-link.hovered .background {
+    opacity: 1; /* Фон появляется при ховере */
   }
   .header-text {
     margin-right: 116px; /* Отступ справа от края страницы */
