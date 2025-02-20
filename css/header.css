@@ -108,16 +108,21 @@ screen and (min-resolution: 2dppx) {
     margin: 0;
   }
   .nav-link::after {
-    content: ""; /* Создаем пустой элемент */
+    content: "";
     position: absolute;
-    bottom: 0; /* Помещаем фон в нижнюю часть элемента */
+    bottom: 0;
     left: 0;
-    width: 100%; /* Ширина фона — вся ширина элемента */
-    height: 4px; /* Высота фона */
+    width: 295px; /* Ширина фона */
+    height: 60px; /* Высота фона */
     background-color: #E86868; /* Цвет фона */
-    transform: scaleX(0); /* Начальное состояние фона скрыто */
-    transform-origin: bottom right; /* Начало анимации от правого нижнего угла */
-    transition: transform 0.3s ease; /* Плавный переход */
+    transform: scaleX(0); /* Изначально фон скрыт */
+    transform-origin: bottom left; /* Фон будет "появляться" с левого нижнего угла */
+    transition: transform 0.3s ease; /* Плавный переход для анимации */
+    margin-bottom: 34px; /* Отступ между фонами */
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1); /* При ховере фон появляется */
+    transform-origin: bottom left; /* Анимация начинается с левого нижнего угла */
   }
 
   .header-text {
