@@ -103,7 +103,7 @@ screen and (min-resolution: 2dppx) {
     height: 60px; /* Высота элемента меню */
     overflow: hidden;
     position: relative;
-    display: flex;
+    
   }
   .nav-list{
     display: flex; /* Используем флексбокс для расположения элементов в строку */
@@ -121,7 +121,7 @@ screen and (min-resolution: 2dppx) {
     height: 100%; /* Высота фона равна высоте родительского элемента */
     background-color: #E86868; /* Цвет фона при ховере */
     opacity: 0; /* Изначально фон скрыт */
-    transition: opacity 0.3s ease; /* Плавное изменение прозрачности */
+    transition: opacity 0.7s ease; /* Плавное изменение прозрачности */
     z-index: -1;
   }
   .nav-link.hovered .background {
