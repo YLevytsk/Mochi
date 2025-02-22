@@ -12,6 +12,7 @@ export default {
   languageOptions: {
     ecmaVersion: 2024,
     globals: {
+      "__DEV__": true,
       ...globals.browser,
       process: "readonly" // ✅ Теперь `process` не будет вызывать ошибку
     },
