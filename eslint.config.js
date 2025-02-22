@@ -34,6 +34,7 @@ export default {
       "warn",
       { allowConstantExport: true },
     ],
+    "no-console": "warn" // ✅ Добавляет предупреждение при console.log
   },
 };
 
