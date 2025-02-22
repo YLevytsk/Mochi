@@ -21,8 +21,7 @@ window.addEventListener('load', function() {
       });
     });
   });
- const hello = "Hello World"
-console.log(hello)
+
  
   
   
