@@ -7,8 +7,8 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
 export default {
-  files: ["**/*.{js,jsx}"],
-  ignores: ["dist"],
+  files: ["**/*.{js,jsx,ts,tsx}"], // ✅ Проверять все JS/TS файлы
+  ignores: ["dist", "node_modules"], // ✅ Игнорировать ненужные папки
   languageOptions: {
     ecmaVersion: 2024,
     globals: globals.browser,
@@ -34,7 +34,8 @@ export default {
       "warn",
       { allowConstantExport: true },
     ],
-    "no-console": "warn" // ✅ 
+    "no-console": "off" // ✅ Разрешает `console.log` во всех файлах
   },
 };
+
 
