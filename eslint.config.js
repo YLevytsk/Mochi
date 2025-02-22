@@ -7,11 +7,14 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 
 export default {
-  files: ["**/*.{js,jsx,ts,tsx}"], // ✅ Проверять все JS/TS файлы
-  ignores: ["dist", "node_modules"], // ✅ Игнорировать ненужные папки
+  files: ["**/*.{js,jsx,ts,tsx}"],
+  ignores: ["dist", "node_modules"],
   languageOptions: {
     ecmaVersion: 2024,
-    globals: globals.browser,
+    globals: {
+      ...globals.browser,
+      process: "readonly" // ✅ Теперь `process` не будет вызывать ошибку
+    },
     parserOptions: {
       ecmaFeatures: { jsx: true },
       sourceType: "module",
@@ -34,7 +37,7 @@ export default {
       "warn",
       { allowConstantExport: true },
     ],
-    "no-console": "off" // ✅ Разрешает `console.log` во всех файлах
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "warn"
   },
 };
 
