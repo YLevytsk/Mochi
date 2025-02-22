@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite --open=false",
     "build": "vite build --base=/Mochi/",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@react-native-community/cli": "^15.1.3",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
     "eslint-plugin-node": "^11.1.0",
@@ -29,7 +29,6 @@
     "izitoast": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-native": "^0.73.11",
     "simplelightbox": "^2.14.3",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
