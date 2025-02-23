@@ -1,7 +1,5 @@
-import React from "react";
-
 function App() {
-  return null; // ❌ Удалена навигация, компонент пока ничего не рендерит
+  return null; // Компонент ничего не рендерит
 }
 
 export default App;
