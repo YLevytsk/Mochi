@@ -1,4 +1,4 @@
-import React from "react";
+// ❌ Удали строку `import React from "react";`, если она не нужна
 
 function App() {
   return (
@@ -15,3 +15,4 @@ function App() {
 }
 
 export default App;
+

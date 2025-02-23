@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";  // React теперь используется
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -26,9 +26,9 @@ function adjustNavLinks() {
   });
 }
 
-// Основной компонент приложения, выполняющий настройки при монтировании
+// Используем React и useEffect для вызова adjustNavLinks
 function Main() {
-  useEffect(() => {
+  React.useEffect(() => {
     adjustNavLinks();
   }, []);
 
@@ -43,6 +43,7 @@ if (process.env.NODE_ENV === "development") {
 // Рендерим приложение в `#root`
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Main />);
+
 
  
   
