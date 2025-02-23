@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -24,23 +24,18 @@ function adjustNavLinks() {
   });
 }
 
-// Главный компонент
-function Main() {
-  useEffect(() => {
-    adjustNavLinks();
-  }, []);
-
-  return <App />;
-}
+// Выравниваем ссылки после загрузки страницы
+window.addEventListener("load", adjustNavLinks);
 
 // Рендерим приложение в `#root`
 const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
-  root.render(<Main />);
+  root.render(<App />);
 } else {
   console.error("Элемент #root не найден в DOM!");
 }
+
 
 
  
