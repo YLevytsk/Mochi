@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */ // ✅ Отключаем правило ESLint
 import React from "react";
+/* eslint-enable no-unused-vars */ // ✅ Включаем правило обратно
+
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -35,6 +38,7 @@ if (rootElement) {
 } else {
   console.error("Элемент #root не найден в DOM!");
 }
+
 
 
 
