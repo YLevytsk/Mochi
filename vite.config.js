@@ -1,49 +1,40 @@
 import { defineConfig } from 'vite';
-import { glob } from 'glob';
+
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: '/Mochi/',  // Если проект развернут в подкаталоге
+    base: '/',  // ✅ Убираем /Mochi/, чтобы пути были правильные
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: '.',  // Указываем, что корневая папка проекта - это корень репозитория
+    root: '.',  // ✅ Указываем, что корневая папка проекта - это корень репозитория
     build: {
       sourcemap: true,
+      emptyOutDir: true,  // ✅ Очищаем dist перед каждой сборкой
+      outDir: './dist',  // ✅ Сборка в папку dist в корне проекта
       rollupOptions: {
-        input: glob.sync('./*.html'),  // Указываем HTML-файлы, которые находятся в корне
+        input: 'index.html',  // ✅ Используем index.html как главный входной файл
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return 'vendor';
             }
           },
-          entryFileNames: chunkInfo => {
-            if (chunkInfo.name === 'commonHelpers') {
-              return 'commonHelpers.js';
-            }
-            return '[name].js';
-          },
-          assetFileNames: assetInfo => {
-            if (assetInfo.name && assetInfo.name.endsWith('.html')) {
-              return '[name].[ext]';
-            }
-            return 'assets/[name]-[hash][extname]';
-          },
+          entryFileNames: '[name].js',
+          assetFileNames: 'assets/[name]-[hash][extname]',  // ✅ CSS и JS теперь в dist/assets/
         },
       },
-      outDir: './dist',  // Сборка в папку dist в корне проекта
-      emptyOutDir: true,
     },
     plugins: [
       injectHTML(),
-      FullReload(['./**/*.html']),  // Следим за всеми HTML файлами в проекте
+      FullReload(['./index.html']),  // ✅ Следим только за главным HTML
       SortCss({
         sort: 'mobile-first',
       }),
     ],
   };
 });
+
