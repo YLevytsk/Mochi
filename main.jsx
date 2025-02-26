@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -8,7 +7,6 @@ function adjustNavLinks() {
 
   let maxWidth = 295;
 
-  // ✅ Проверяем, есть ли элементы
   if (navLinks.length === 0) return;
 
   navLinks.forEach((link) => {
@@ -20,12 +18,12 @@ function adjustNavLinks() {
     });
 
     link.addEventListener("mouseleave", () => {
-      link.style.backgroundColor = "inherit"; // ✅ Вернём дефолтный цвет
+      link.style.backgroundColor = "inherit";
     });
   });
 }
 
-// ✅ Следим за изменениями в `#root`
+// Следим за изменениями в `#root`
 const observer = new MutationObserver(() => {
   adjustNavLinks();
 });
@@ -37,7 +35,6 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(<App />);
 }
-
 
 
 
