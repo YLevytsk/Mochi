@@ -5,7 +5,7 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: './',  // ✅ Фикс путей для Vercel и GitHub Pages
+    base: './',  // ✅ Фикс для корректных путей на Vercel
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -13,29 +13,30 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       emptyOutDir: true,  // ✅ Очищаем dist перед каждой сборкой
-      outDir: './dist',  // ✅ Сборка в dist/
+      outDir: 'dist',  // ✅ Сборка в dist/
       rollupOptions: {
-        input: 'index.html',  // ✅ Используем index.html
+        input: 'index.html',  // ✅ Используем index.html как основной вход
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return 'vendor';
             }
           },
-          entryFileNames: 'main.js',  // ✅ Преобразование main.jsx → main.js
+          entryFileNames: 'main.js',  // ✅ Vite создаст main.js в dist/
           assetFileNames: 'assets/[name]-[hash][extname]',  // ✅ Фикс путей для CSS и JS
         },
       },
     },
     plugins: [
       react(),
-      command === 'serve' ? FullReload(['./index.html']) : null,  // ✅ Только в dev-режиме
+      command === 'serve' ? FullReload(['index.html']) : null,  // ✅ Только в dev-режиме
       SortCss({
         sort: 'mobile-first',
       }),
     ].filter(Boolean), // ✅ Убираем null-значения из массива
   };
 });
+
 
 
 
