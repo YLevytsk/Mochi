@@ -5,7 +5,7 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: './',  // ✅ Фикс для корректных путей на Vercel
+    base: './',  // ✅ Фикс для корректных путей на Vercel и GitHub Pages
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -28,15 +28,12 @@ export default defineConfig(({ command }) => {
       },
     },
     plugins: [
-      react(),
+      react(),  // ✅ Добавляем поддержку React и JSX
       command === 'serve' ? FullReload(['index.html']) : null,  // ✅ Только в dev-режиме
-      SortCss({
-        sort: 'mobile-first',
-      }),
+      SortCss({ sort: 'mobile-first' }),
     ].filter(Boolean), // ✅ Убираем null-значения из массива
   };
 });
-
 
 
 
