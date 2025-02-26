@@ -12,17 +12,18 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-    emptyOutDir: false, // 🚨 ОТКЛЮЧАЕМ ОЧИСТКУ `dist/`, ЧТОБЫ `Vite` НЕ УДАЛЯЛ `main.js`
+    emptyOutDir: true,
     outDir: 'dist',
+    copyPublicDir: true,
     rollupOptions: {
-      input: 'index.html',
+      input: 'index.html',  // ✅ Используем `index.html` как точку входа
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return 'vendor';
           }
         },
-        entryFileNames: '[name].js',
+        entryFileNames: 'index.js',  // ✅ Vite создаст `index.js`
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
