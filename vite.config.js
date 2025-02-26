@@ -5,7 +5,7 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: './',  // ✅ Исправлено для Vercel и GitHub Pages
+    base: './',  // ✅ Фикс путей для Vercel и GitHub Pages
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -22,8 +22,8 @@ export default defineConfig(({ command }) => {
               return 'vendor';
             }
           },
-          entryFileNames: 'main.js',  // ✅ Фикс пути к main.js
-          assetFileNames: 'assets/[name]-[hash][extname]',  // ✅ Фикс пути для CSS и JS
+          entryFileNames: 'main.js',  // ✅ Преобразование main.jsx → main.js
+          assetFileNames: 'assets/[name]-[hash][extname]',  // ✅ Фикс путей для CSS и JS
         },
       },
     },
@@ -36,5 +36,6 @@ export default defineConfig(({ command }) => {
     ].filter(Boolean), // ✅ Убираем null-значения из массива
   };
 });
+
 
 
