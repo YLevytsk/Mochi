@@ -1,0 +1,1 @@
+{"version":3,"file":"App-CFBVocyu.js","sources":["../../App.jsx"],"sourcesContent":["/* eslint-disable no-unused-vars */\r\nimport React from \"react\"; // ✅ Отключаем правило ESLint\r\n/* eslint-enable no-unused-vars */\r\n\r\nfunction App() {\r\n  \r\n}\r\n\r\nexport default App;\r\n\r\n\r\n\r\n\r\n\r\n"],"names":["App"],"mappings":"6BAIA,SAASA,GAAM,CAEf"}
