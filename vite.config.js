@@ -12,20 +12,17 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-    emptyOutDir: true,  // ✅ Очищаем `dist/` перед каждой сборкой
+    emptyOutDir: false, // 🚨 ОТКЛЮЧАЕМ ОЧИСТКУ `dist/`, ЧТОБЫ `Vite` НЕ УДАЛЯЛ `main.js`
     outDir: 'dist',
     rollupOptions: {
-      input: {
-        main: 'index.html',  // ✅ Указываем явно index.html
-        mainJS: 'main.jsx',  // ✅ Принудительно включаем main.jsx в сборку
-      },
+      input: 'index.html',
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return 'vendor';
           }
         },
-        entryFileNames: '[name].js',  // ✅ Теперь `main.jsx` → `main.js`
+        entryFileNames: '[name].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
