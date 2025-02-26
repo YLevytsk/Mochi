@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */ // ✅ Отключаем правило ESLint
 import React from "react";
-/* eslint-enable no-unused-vars */ // ✅ Включаем правило обратно
-
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -11,31 +8,36 @@ function adjustNavLinks() {
 
   let maxWidth = 295;
 
-  navLinks.forEach((link) => {
-    link.style.width = `${maxWidth}px`;
-  });
+  // ✅ Проверяем, есть ли элементы
+  if (navLinks.length === 0) return;
 
   navLinks.forEach((link) => {
+    link.style.width = `${maxWidth}px`;
+
     link.addEventListener("mouseenter", () => {
       link.style.backgroundColor = "#E86868";
       link.style.transition = "background-color 0.3s ease";
     });
 
     link.addEventListener("mouseleave", () => {
-      link.style.backgroundColor = "";
+      link.style.backgroundColor = "inherit"; // ✅ Вернём дефолтный цвет
     });
   });
 }
 
-// Выравниваем ссылки после загрузки страницы
-window.addEventListener("load", adjustNavLinks);
+// ✅ Следим за изменениями в `#root`
+const observer = new MutationObserver(() => {
+  adjustNavLinks();
+});
+observer.observe(document.getElementById("root"), { childList: true, subtree: true });
 
 // Рендерим приложение в `#root`
 const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(<App />);
-} 
+}
+
 
 
 
