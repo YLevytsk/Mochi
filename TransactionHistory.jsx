@@ -1,4 +1,5 @@
-import React from "react";
+// ❌ Удаляем этот импорт, если он есть
+// import React from "react";
 
 export default function TransactionHistory({ items }) {
   return (
@@ -22,3 +23,4 @@ export default function TransactionHistory({ items }) {
     </table>
   );
 }
+
