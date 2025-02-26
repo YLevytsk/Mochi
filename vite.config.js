@@ -28,7 +28,9 @@ export default defineConfig(({ command }) => {
       },
     },
     plugins: [
-      react(),  // ✅ Добавляем поддержку React и JSX
+      react({
+        jsxImportSource: "react",  // ✅ Vite автоматически добавляет import React
+      }),
       command === 'serve' ? FullReload(['index.html']) : null,  // ✅ Только в dev-режиме
       SortCss({ sort: 'mobile-first' }),
     ].filter(Boolean), // ✅ Убираем null-значения из массива
