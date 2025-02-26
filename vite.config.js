@@ -5,37 +5,44 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: './',  // ✅ Фикс для корректных путей на Vercel и GitHub Pages
+    base: './',  // ✅ Фикс для Vercel и GitHub Pages
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: '.',  // ✅ Корень проекта
+    root: '.',
     build: {
       sourcemap: true,
-      emptyOutDir: true,  // ✅ Очищаем dist перед каждой сборкой
-      outDir: 'dist',  // ✅ Сборка в dist/
+      emptyOutDir: true,
+      outDir: 'dist',
       rollupOptions: {
-        input: 'index.html',  // ✅ Используем index.html как основной вход
+        input: 'index.html',
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return 'vendor';
             }
           },
-          entryFileNames: 'main.js',  // ✅ Vite создаст main.js в dist/
-          assetFileNames: 'assets/[name]-[hash][extname]',  // ✅ Фикс путей для CSS и JS
+          entryFileNames: 'main.js',
+          assetFileNames: 'assets/[name]-[hash][extname]',
         },
       },
     },
     plugins: [
       react({
-        jsxImportSource: "react",  // ✅ Vite автоматически добавляет import React
+        jsxImportSource: "react",  // ✅ Автоимпорт React
+        babel: {
+          presets: ['@babel/preset-react'], // ✅ Автоопределение JSX
+        },
+        esbuild: {
+          jsx: "automatic", // ✅ React больше не нужен в каждом файле
+        },
       }),
-      command === 'serve' ? FullReload(['index.html']) : null,  // ✅ Только в dev-режиме
+      command === 'serve' ? FullReload(['index.html']) : null,
       SortCss({ sort: 'mobile-first' }),
-    ].filter(Boolean), // ✅ Убираем null-значения из массива
+    ].filter(Boolean),
   };
 });
+
 
 
 
