@@ -4,7 +4,7 @@ import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig({
-  base: './', // ✅ Фикс путей для Vercel
+  base: './', // ✅ Фикс для Vercel и GitHub Pages
   plugins: [
     react(),  // ✅ Поддержка React и JSX
     FullReload(['index.html']),
@@ -12,9 +12,8 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-    emptyOutDir: true,
+    emptyOutDir: true,  // ✅ Очищаем `dist/` перед каждой сборкой
     outDir: 'dist',
-    copyPublicDir: true,  // ✅ Гарантируем, что файлы из корня проекта попадут в dist/
     rollupOptions: {
       input: 'index.html',
       output: {
@@ -23,13 +22,9 @@ export default defineConfig({
             return 'vendor';
           }
         },
-        entryFileNames: '[name].js',  // ✅ Vite создаст main.js
+        entryFileNames: '[name].js',  // ✅ Vite автоматически заменит `main.jsx` → `main.js`
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },
 });
-
-
-
-
