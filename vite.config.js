@@ -23,7 +23,8 @@ export default defineConfig({
             return 'vendor';
           }
         },
-        entryFileNames: 'index.js',  // ✅ Vite создаст `index.js`
+        entryFileNames: 'assets/index-[hash].js',  // ✅ Теперь JS будет в `assets/`
+        chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
