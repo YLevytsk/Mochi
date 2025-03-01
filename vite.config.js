@@ -4,9 +4,9 @@ import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig({
-  base: './', // ✅ Фикс путей для GitHub Pages
+  base: './', // ✅ Поддержка GitHub Pages и локального запуска
   plugins: [
-    react(),
+    react(), 
     FullReload(['index.html']),
     SortCss({ sort: 'mobile-first' }),
   ],
@@ -15,6 +15,11 @@ export default defineConfig({
       '@': '/src', // ✅ Упрощение путей
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx'], // ✅ Vite понимает `.jsx`
+  },
+  esbuild: {
+    loader: 'jsx', // ✅ Указываем, что Vite должен компилировать JSX
+    include: /src\/.*\.jsx?$/, // ✅ Только файлы в `src`
+    exclude: /node_modules/, // ❌ Исключаем `node_modules`
   },
   build: {
     sourcemap: true,
@@ -28,10 +33,11 @@ export default defineConfig({
             return 'vendor';
           }
         },
-        entryFileNames: 'index.js', // ✅ Теперь `index.js` будет в `dist/`
+        entryFileNames: 'index.js', // ✅ `index.js` в корне `dist/`
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },
 });
+
