@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
@@ -18,22 +19,25 @@ function adjustNavLinks() {
     });
 
     link.addEventListener("mouseleave", () => {
-      link.style.backgroundColor = "inherit";
+      link.style.backgroundColor = ""; // Вернёт фон в исходное состояние
     });
   });
 }
 
-// Следим за изменениями в `#root`
-const observer = new MutationObserver(() => {
-  adjustNavLinks();
-});
-observer.observe(document.getElementById("root"), { childList: true, subtree: true });
+// Главный компонент
+function Main() {
+  useEffect(() => {
+    adjustNavLinks(); // Вызываем при монтировании
+  }, []);
+
+  return <App />;
+}
 
 // Рендерим приложение в `#root`
 const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
-  root.render(<App />);
+  root.render(<Main />);
 }
 
 

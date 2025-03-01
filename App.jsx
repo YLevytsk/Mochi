@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
-import React from "react"; // ✅ Отключаем правило ESLint
-/* eslint-enable no-unused-vars */
+import React from 'react';
 
-function App() {
-  
-}
+const App = () => {
+  // ...
+};
 
 export default App;
 
