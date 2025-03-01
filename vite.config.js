@@ -4,26 +4,31 @@ import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig({
-  base: './', // ✅ Фикс путей для Vercel и GitHub Pages
+  base: './', // ✅ Фикс путей для GitHub Pages
   plugins: [
-    react(),  // ✅ Поддержка React и JSX
+    react(),
     FullReload(['index.html']),
     SortCss({ sort: 'mobile-first' }),
   ],
+  resolve: {
+    alias: {
+      '@': '/src', // ✅ Упрощение путей
+    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'], // ✅ Vite понимает `.jsx`
+  },
   build: {
     sourcemap: true,
     emptyOutDir: true,
     outDir: 'dist',
-    copyPublicDir: true,
     rollupOptions: {
-      input: 'index.html',  // ✅ Используем `index.html` как точку входа
+      input: 'index.html', // ✅ Главный HTML-файл
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return 'vendor';
           }
         },
-        entryFileNames: 'assets/index-[hash].js',  // ✅ Теперь JS будет в `assets/`
+        entryFileNames: 'index.js', // ✅ Теперь `index.js` будет в `dist/`
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
