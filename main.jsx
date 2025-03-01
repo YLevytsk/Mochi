@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from "react"; // ✅ React нужен для рендеринга
+import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import Navigation from "./Navigation"; // ✅ Подключаем Navigation
+import Navigation from "./components/Navigation"; // ✅ Теперь путь правильный!
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <>
-      <Navigation /> {/* ✅ Теперь навигация работает */}
+      <Navigation />
       <App />
     </>
   );
