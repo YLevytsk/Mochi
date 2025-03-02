@@ -7,13 +7,12 @@ import path from "path";
 export default defineConfig({
   base: "/Mochi/", // ✅ Правильный путь для GitHub Pages
   plugins: [react()],
-  publicDir: ".", // ✅ Используем корневую директорию как public
   build: {
     outDir: "dist",
     emptyOutDir: true,
-    assetsDir: "assets", // ✅ Все ассеты в `dist/assets/`
+    assetsDir: "assets",
     rollupOptions: {
-      input: "index.html", // ✅ Входной HTML-файл
+      input: "index.html",
       output: {
         entryFileNames: "index.js",
         chunkFileNames: "assets/[name]-[hash].js",
@@ -21,33 +20,20 @@ export default defineConfig({
       },
     },
   },
-  buildEnd() {
-    const assetExtensions = [".css", ".jpg", ".png", ".svg", ".webp"];
-    const assetDir = "dist/assets";
-
-    if (!fs.existsSync(assetDir)) {
-      fs.mkdirSync(assetDir, { recursive: true });
-    }
-
-    const sourceFiles = fs.readdirSync(".");
-    sourceFiles.forEach((file) => {
-      if (assetExtensions.some((ext) => file.endsWith(ext))) {
-        fs.copyFileSync(file, path.join(assetDir, file));
-        console.log(`📂 Copied ${file} to dist/assets/`);
-      }
-    });
-  },
 });
 
+// ✅ Копируем `css/` и `images/` в `dist/`
+const foldersToCopy = ["css", "images"];
+foldersToCopy.forEach((folder) => {
+  const sourcePath = path.resolve(folder);
+  const targetPath = path.resolve("dist", folder);
 
+  if (fs.existsSync(sourcePath)) {
+    fs.mkdirSync(targetPath, { recursive: true });
 
-
-
-
-
-
-
-
-
-
-
+    fs.readdirSync(sourcePath).forEach((file) => {
+      fs.copyFileSync(path.join(sourcePath, file), path.join(targetPath, file));
+      console.log(`📂 Copied ${file} to dist/${folder}/`);
+    });
+  }
+});
