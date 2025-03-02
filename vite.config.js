@@ -5,36 +5,33 @@ import fs from "fs";
 import path from "path";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ GitHub Pages требует указания имени репозитория
+  base: "/Mochi/", // ✅ GitHub Pages
   plugins: [react()],
   build: {
-    outDir: "dist", // ✅ Все файлы собираются сюда
+    outDir: "dist",
     emptyOutDir: true,
-    assetsDir: "assets", // ✅ Все ассеты будут в `dist/assets/`
+    assetsDir: "assets",
     rollupOptions: {
-      input: "index.html", // ✅ Главный файл - `index.html`
+      input: "main.jsx", // ✅ Указываем `main.jsx` как главный файл
       output: {
-        entryFileNames: "index.js", // ✅ Теперь `index.js` создается в `dist/`
+        entryFileNames: "index.js", // ✅ main.jsx → dist/index.js
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
   },
   esbuild: {
-    jsx: "automatic", // ✅ Автоматически преобразовывает JSX
+    jsx: "automatic", // ✅ JSX → JavaScript
   },
 });
 
-// ✅ Гарантированно создаем `dist/assets/`
+// ✅ Гарантированное копирование `css/`, `images/`, `components/`
 const distDir = path.resolve("dist");
-const assetsDir = path.join(distDir, "assets");
+const foldersToCopy = ["css", "images", "components"];
 
-if (!fs.existsSync(assetsDir)) {
-  fs.mkdirSync(assetsDir, { recursive: true });
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true });
 }
-
-// ✅ Копируем `css/`, `images/`, `components/`, `js/`
-const foldersToCopy = ["css", "images", "components", "js"];
 
 foldersToCopy.forEach((folder) => {
   const sourcePath = path.resolve(folder);
@@ -49,4 +46,5 @@ foldersToCopy.forEach((folder) => {
     });
   }
 });
+
 
