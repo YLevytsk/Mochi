@@ -1,6 +1,11 @@
-import ReactDOM from 'react-dom/client';
-import App from './App';
+/* eslint-disable no-unused-vars */
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Navigation from "./components/Navigation"; // Если этот компонент есть в проекте
 
-const root = document.getElementById('root');
-ReactDOM.createRoot(root).render(<App />);
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(<Navigation />);
+}
 
