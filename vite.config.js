@@ -9,10 +9,8 @@ export default defineConfig({
     FullReload(['index.html']), // ✅ Перезагрузка при изменении index.html
   ],
   resolve: {
-    alias: {
-      '@': '/src', // ✅ Упрощение путей
-    },
-    extensions: ['.js', '.jsx', '.ts', '.tsx'], // ✅ Поддержка JSX
+    alias: {}, // 🔥 УДАЛЯЕМ лишний alias, раз нет src
+    extensions: ['.js', '.jsx'], // ✅ Поддержка JSX
   },
   esbuild: {
     jsx: 'automatic', // 🔥 Поддержка JSX без необходимости импортировать React
@@ -36,6 +34,7 @@ export default defineConfig({
     },
   },
 });
+
 
 
 
