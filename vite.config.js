@@ -3,14 +3,14 @@ import react from "@vitejs/plugin-react";
 import FullReload from "vite-plugin-full-reload";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ GitHub Pages
+  base: "/Mochi/", // ✅ Правильный путь для GitHub Pages
   plugins: [
     react(),
-    FullReload(["index.html"]), // ✅ Перезагрузка при изменении index.html
+    FullReload(["index.html"]),
     {
-      name: "fix-html-script",
+      name: "html-transform",
       transformIndexHtml(html) {
-        return html.replaceAll('src="./index.jsx"', 'src="./index.js"'); // ✅ Принудительно заменяем ВСЕ ссылки
+        return html.replace(/src="\.\/index\.jsx"/g, 'src="./index.js"');
       },
     },
   ],
