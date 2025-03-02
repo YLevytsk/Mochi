@@ -1,12 +1,12 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 function adjustNavLinks() {
-  const navLinks = document.querySelectorAll(".nav-link");
+  console.log("✅ Navigation script executed!"); // ✅ Проверяем, выполняется ли код
 
+  const navLinks = document.querySelectorAll(".nav-link");
   if (navLinks.length === 0) return;
 
   let maxWidth = 295;
-
   navLinks.forEach((link) => {
     link.style.width = `${maxWidth}px`;
     link.addEventListener("mouseenter", handleMouseEnter);
@@ -25,12 +25,13 @@ function adjustNavLinks() {
 
 // Подключаем обработчик при монтировании компонента
 function Navigation() {
-  useLayoutEffect(() => {
-    adjustNavLinks(); // ✅ Вызываем при загрузке страницы
+  useEffect(() => {
+    adjustNavLinks(); // ✅ Код теперь выполняется при загрузке
   }, []);
 
-  return <div style={{ display: "none" }}></div>; // ✅ Чтобы React его не удалял
+  return <div>✅ Navigation Loaded</div>; // ✅ Теперь React-компонент видимый!
 }
 
 export default Navigation;
+
 
