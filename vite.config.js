@@ -6,7 +6,7 @@ export default defineConfig({
   base: './', // ✅ Поддержка GitHub Pages
   plugins: [
     react(),
-    FullReload(['public/index.html']), // ✅ Указан правильный путь
+    FullReload(['index.html']), // ✅ Перезагрузка при изменении index.html
   ],
   resolve: {
     alias: {
@@ -22,7 +22,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: 'dist',
     rollupOptions: {
-      input: 'public/index.html', // ✅ Главный HTML-файл
+      input: 'index.html', // ✅ Указываем файл в корне проекта
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -36,6 +36,7 @@ export default defineConfig({
     },
   },
 });
+
 
 
 
