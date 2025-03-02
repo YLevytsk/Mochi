@@ -2,8 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ Путь для GitHub Pages
-  plugins: [react()], // ❌ Убрали FullReload (он не нужен на проде!)
+  base: "/Mochi/", // ✅ GitHub Pages путь
+  plugins: [react()],
   resolve: {
     alias: {},
     extensions: [".js", ".jsx"], // ✅ Поддержка JSX
@@ -16,15 +16,16 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: "dist",
     rollupOptions: {
-      input: "index.html",
+      input: "main.jsx", // ✅ Меняем с `index.html` на `main.jsx`
       output: {
-        entryFileNames: "index.js", // ✅ Убедимся, что создаётся `index.js`
+        entryFileNames: "index.js", // ✅ `index.js` появится в `dist/`
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
   },
 });
+
 
 
 
