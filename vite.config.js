@@ -5,14 +5,14 @@ import fs from "fs";
 import path from "path";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ Правильный путь для GitHub Pages
+  base: "/Mochi/", // ✅ Для GitHub Pages
   plugins: [react()],
   build: {
     outDir: "dist",
     emptyOutDir: true,
     assetsDir: "assets",
     rollupOptions: {
-      input: "index.html", // ✅ Указываем `index.html`, а не `main.jsx`
+      input: "index.html", // ✅ Главный HTML-файл (Vite найдёт `main.jsx`)
       output: {
         entryFileNames: "index.js", // ✅ `main.jsx` → `dist/index.js`
         chunkFileNames: "assets/[name]-[hash].js",
@@ -21,11 +21,11 @@ export default defineConfig({
     },
   },
   esbuild: {
-    jsx: "automatic", // ✅ Автоматически преобразовывает JSX
+    jsx: "automatic", // ✅ Автоматическое преобразование JSX
   },
 });
 
-// ✅ Гарантированное копирование `css/`, `images/`, `components/` в `dist/assets/`
+// ✅ Гарантированно копируем `css/`, `images/`, `components/`
 const distDir = path.resolve("dist");
 const assetsDir = path.join(distDir, "assets");
 
@@ -49,10 +49,19 @@ foldersToCopy.forEach((folder) => {
   }
 });
 
-// ✅ Проверяем, создался ли `index.js`
+// ✅ Гарантированно копируем `index.html`
+const indexHtmlPath = path.resolve("index.html");
+const targetIndexHtmlPath = path.join(distDir, "index.html");
+
+if (fs.existsSync(indexHtmlPath)) {
+  fs.copyFileSync(indexHtmlPath, targetIndexHtmlPath);
+  console.log(`📂 Copied index.html to dist/`);
+}
+
+// ✅ Проверяем, что `index.js` создался
 const indexJsPath = path.join(distDir, "index.js");
 if (!fs.existsSync(indexJsPath)) {
-  console.error("❌ Ошибка: index.js не был создан!");
+  console.error("❌ Ошибка: `index.js` не был создан! Проверяй `main.jsx`.");
   process.exit(1);
 }
 
