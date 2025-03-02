@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
-// Функция для работы с навигацией
 function adjustNavLinks() {
   const navLinks = document.querySelectorAll(".nav-link");
 
@@ -10,7 +9,6 @@ function adjustNavLinks() {
 
   navLinks.forEach((link) => {
     link.style.width = `${maxWidth}px`;
-
     link.addEventListener("mouseenter", handleMouseEnter);
     link.addEventListener("mouseleave", handleMouseLeave);
   });
@@ -21,17 +19,18 @@ function adjustNavLinks() {
   }
 
   function handleMouseLeave(event) {
-    event.target.style.backgroundColor = ""; // Вернёт фон в исходное состояние
+    event.target.style.backgroundColor = "";
   }
 }
 
 // Подключаем обработчик при монтировании компонента
 function Navigation() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     adjustNavLinks(); // ✅ Вызываем при загрузке страницы
   }, []);
 
-  return null; // ✅ Ничего не рендерит, только выполняет код
+  return <div style={{ display: "none" }}></div>; // ✅ Чтобы React его не удалял
 }
 
 export default Navigation;
+
