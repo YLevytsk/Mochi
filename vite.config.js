@@ -3,26 +3,32 @@ import react from "@vitejs/plugin-react";
 import FullReload from "vite-plugin-full-reload";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ Путь для GitHub Pages
+  base: "/Mochi/", // ✅ GitHub Pages
   plugins: [
     react(),
-    FullReload(["index.html"]), // ✅ Автоматическая перезагрузка
+    FullReload(["index.html"]), // ✅ Перезагрузка при изменении index.html
+    {
+      name: "html-transform",
+      transformIndexHtml(html) {
+        return html.replace(/src="\.\/index\.jsx"/g, 'src="./index.js"');
+      },
+    },
   ],
   resolve: {
     alias: {},
     extensions: [".js", ".jsx"], // ✅ Поддержка JSX
   },
   esbuild: {
-    jsx: "automatic", // ✅ Теперь Vite компилирует JSX → JavaScript
+    jsx: "automatic", // ✅ Vite теперь компилирует JSX → JavaScript
   },
   build: {
     sourcemap: true,
     emptyOutDir: true,
-    outDir: "dist", // ✅ Все файлы попадут в `dist`
+    outDir: "dist",
     rollupOptions: {
-      input: "index.html", // ✅ Главный входной файл
+      input: "index.html",
       output: {
-        entryFileNames: "index.js", // ✅ Убедимся, что Vite создаёт `index.js`
+        entryFileNames: "index.js", // ✅ Всегда создаём `index.js`
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
