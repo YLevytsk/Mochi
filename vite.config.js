@@ -12,7 +12,7 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: "assets",
     rollupOptions: {
-      input: "main.jsx", // ✅ Указываем `main.jsx` как главный файл
+      input: "index.html", // ✅ Теперь `index.html` будет включен в сборку
       output: {
         entryFileNames: "index.js", // ✅ main.jsx → dist/index.js
         chunkFileNames: "assets/[name]-[hash].js",
@@ -25,14 +25,16 @@ export default defineConfig({
   },
 });
 
-// ✅ Гарантированное копирование `css/`, `images/`, `components/`
+// ✅ Гарантированное копирование `css/`, `images/`, `components/`, `index.html`
 const distDir = path.resolve("dist");
 const foldersToCopy = ["css", "images", "components"];
+const filesToCopy = ["index.html"]; // ✅ Добавляем index.html
 
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
+// ✅ Копируем папки
 foldersToCopy.forEach((folder) => {
   const sourcePath = path.resolve(folder);
   const targetPath = path.join(distDir, folder);
@@ -46,5 +48,17 @@ foldersToCopy.forEach((folder) => {
     });
   }
 });
+
+// ✅ Копируем файлы (включая index.html)
+filesToCopy.forEach((file) => {
+  const sourcePath = path.resolve(file);
+  const targetPath = path.join(distDir, file);
+
+  if (fs.existsSync(sourcePath)) {
+    fs.copyFileSync(sourcePath, targetPath);
+    console.log(`📄 Copied ${file} to dist/`);
+  }
+});
+
 
 
