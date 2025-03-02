@@ -1,9 +1,6 @@
-import { AppRegistry } from 'react-native';
+import ReactDOM from 'react-dom/client';
 import App from './App';
-import { name as appName } from './app.json';
 
-if (__DEV__) {
-  import('react-devtools');
-}
+const root = document.getElementById('root');
+ReactDOM.createRoot(root).render(<App />);
 
-AppRegistry.registerComponent(appName, () => App);
