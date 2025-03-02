@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export default defineConfig({
   base: './', // ✅ Поддержка GitHub Pages
   plugins: [
@@ -35,9 +37,10 @@ export default defineConfig({
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
-      external: import.meta.env.MODE === 'production' ? ['react-devtools'] : [], // ✅ React DevTools только в dev
+      external: isProduction ? ['react-devtools'] : [], // ✅ React DevTools исключается только в production
     },
   },
 });
+
 
 
