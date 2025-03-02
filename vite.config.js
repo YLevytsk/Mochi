@@ -5,36 +5,37 @@ import fs from "fs";
 import path from "path";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ GitHub Pages
+  base: "/Mochi/", // ✅ GitHub Pages требует указания имени репозитория
   plugins: [react()],
   build: {
-    outDir: "dist",
+    outDir: "dist", // ✅ Все файлы собираются сюда
     emptyOutDir: true,
-    assetsDir: "assets",
+    assetsDir: "assets", // ✅ Все ассеты будут в `dist/assets/`
     rollupOptions: {
-      input: "index.html", // ✅ Теперь `index.html` будет включен в сборку
+      input: "index.html", // ✅ Главный файл - `index.html`
       output: {
-        entryFileNames: "index.js", // ✅ main.jsx → dist/index.js
+        entryFileNames: "index.js", // ✅ Теперь `index.js` создается в `dist/`
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
   },
   esbuild: {
-    jsx: "automatic", // ✅ JSX → JavaScript
+    jsx: "automatic", // ✅ Автоматически преобразовывает JSX
   },
 });
 
-// ✅ Гарантированное копирование `css/`, `images/`, `components/`, `index.html`
+// ✅ Гарантированно создаем `dist/assets/`
 const distDir = path.resolve("dist");
-const foldersToCopy = ["css", "images", "components"];
-const filesToCopy = ["index.html"]; // ✅ Добавляем index.html
+const assetsDir = path.join(distDir, "assets");
 
-if (!fs.existsSync(distDir)) {
-  fs.mkdirSync(distDir, { recursive: true });
+if (!fs.existsSync(assetsDir)) {
+  fs.mkdirSync(assetsDir, { recursive: true });
 }
 
-// ✅ Копируем папки
+// ✅ Копируем `css/`, `images/`, `components/`, `js/`
+const foldersToCopy = ["css", "images", "components", "js"];
+
 foldersToCopy.forEach((folder) => {
   const sourcePath = path.resolve(folder);
   const targetPath = path.join(distDir, folder);
@@ -48,17 +49,4 @@ foldersToCopy.forEach((folder) => {
     });
   }
 });
-
-// ✅ Копируем файлы (включая index.html)
-filesToCopy.forEach((file) => {
-  const sourcePath = path.resolve(file);
-  const targetPath = path.join(distDir, file);
-
-  if (fs.existsSync(sourcePath)) {
-    fs.copyFileSync(sourcePath, targetPath);
-    console.log(`📄 Copied ${file} to dist/`);
-  }
-});
-
-
 
