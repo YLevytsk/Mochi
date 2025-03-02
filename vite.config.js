@@ -10,8 +10,14 @@ export default defineConfig({
     FullReload(['index.html']),
     SortCss({ sort: 'mobile-first' }),
   ],
+  resolve: {
+    alias: {
+      '@': '/src', // ✅ Упрощение путей
+    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'], // ✅ Поддержка JSX
+  },
   esbuild: {
-    jsx: 'automatic', // ✅ Включает поддержку JSX без необходимости импортировать React
+    jsx: 'automatic', // 🔥 Поддержка JSX без необходимости импортировать React
   },
   build: {
     sourcemap: true,
@@ -19,7 +25,6 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: 'index.html', // ✅ Главный HTML-файл
-      external: ['react-native'], // 🔥 Исключаем `react-native` из сборки!
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -30,6 +35,7 @@ export default defineConfig({
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
       },
+      external: import.meta.env.MODE === 'production' ? ['react-devtools'] : [], // ✅ React DevTools только в dev
     },
   },
 });
