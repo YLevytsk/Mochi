@@ -10,14 +10,8 @@ export default defineConfig({
     FullReload(['index.html']),
     SortCss({ sort: 'mobile-first' }),
   ],
-  resolve: {
-    alias: {
-      '@': '/src', // ✅ Упрощение путей
-    },
-    extensions: ['.js', '.jsx', '.ts', '.tsx'], // ✅ Поддержка JSX
-  },
   esbuild: {
-    jsx: 'automatic', // 🔥 Включает поддержку JSX без необходимости импортировать React
+    jsx: 'automatic', // ✅ Включает поддержку JSX без необходимости импортировать React
   },
   build: {
     sourcemap: true,
@@ -38,4 +32,5 @@ export default defineConfig({
     },
   },
 });
+
 
