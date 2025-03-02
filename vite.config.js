@@ -19,6 +19,7 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: 'index.html', // ✅ Главный HTML-файл
+      external: ['react-native'], // 🔥 Исключаем `react-native` из сборки!
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
