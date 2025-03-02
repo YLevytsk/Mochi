@@ -1,25 +1,15 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import FullReload from "vite-plugin-full-reload";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ Правильный путь для GitHub Pages
-  plugins: [
-    react(),
-    FullReload(["index.html"]),
-    {
-      name: "html-transform",
-      transformIndexHtml(html) {
-        return html.replace(/src="\.\/index\.jsx"/g, 'src="./index.js"');
-      },
-    },
-  ],
+  base: "/Mochi/", // ✅ Путь для GitHub Pages
+  plugins: [react()], // ❌ Убрали FullReload (он не нужен на проде!)
   resolve: {
     alias: {},
     extensions: [".js", ".jsx"], // ✅ Поддержка JSX
   },
   esbuild: {
-    jsx: "automatic", // ✅ Vite теперь компилирует JSX → JavaScript
+    jsx: "automatic", // ✅ Позволяет JSX работать без `import React`
   },
   build: {
     sourcemap: true,
@@ -28,7 +18,7 @@ export default defineConfig({
     rollupOptions: {
       input: "index.html",
       output: {
-        entryFileNames: "index.js", // ✅ Всегда создаём `index.js`
+        entryFileNames: "index.js", // ✅ Убедимся, что создаётся `index.js`
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
