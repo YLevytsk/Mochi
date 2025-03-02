@@ -2,18 +2,20 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ GitHub Pages путь
+  base: "/Mochi/",
   plugins: [react()],
   build: {
-    outDir: "dist", // ✅ Указываем папку для сборки
+    outDir: "dist",
     rollupOptions: {
-      input: "index.html", // ✅ Указываем главный файл
+      input: "index.html",
     },
   },
   esbuild: {
-    jsx: "automatic", // ✅ Позволяет использовать JSX в файле index.js
+    loader: "jsx", // ✅ Говорим Vite, что index.js содержит JSX
+    include: /.*\.js$/, // ✅ Говорим Vite, что даже файлы .js могут содержать JSX
   },
 });
+
 
 
 
