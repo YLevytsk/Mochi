@@ -1,39 +1,20 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import FullReload from "vite-plugin-full-reload";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ ПРАВИЛЬНЫЙ путь для GitHub Pages
-  plugins: [
-    react(),
-    FullReload(["index.html"]), // ✅ Перезагрузка при изменении index.html
-  ],
-  resolve: {
-    alias: {},
-    extensions: [".js", ".jsx"], // ✅ Поддержка JSX
-  },
-  esbuild: {
-    jsx: "preserve", // ✅ Оставляет JSX без преобразований
-  },
+  base: "/Mochi/", // ✅ GitHub Pages путь
+  plugins: [react()],
   build: {
-    sourcemap: true,
-    emptyOutDir: true,
-    outDir: "dist", // ✅ Сборка в `dist`
+    outDir: "dist", // ✅ Указываем папку для сборки
     rollupOptions: {
-      input: "index.html", // ✅ Указываем `index.html` в корне
-      output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
-        },
-        entryFileNames: "index.js", // ✅ Убедись, что в `dist/` создается `index.js`
-        chunkFileNames: "assets/[name]-[hash].js",
-        assetFileNames: "assets/[name]-[hash][extname]",
-      },
+      input: "index.html", // ✅ Указываем главный файл
     },
   },
+  esbuild: {
+    jsx: "automatic", // ✅ Позволяет использовать JSX в файле index.js
+  },
 });
+
 
 
 
