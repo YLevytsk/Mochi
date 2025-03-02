@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Navigation from "./components/Navigation.jsx"; // ✅ Убедись, что этот файл существует
+import Navigation from "./components/Navigation"; // ✅ Файл должен существовать!
 
 const rootElement = document.getElementById("root");
 
@@ -12,10 +12,6 @@ if (rootElement) {
   );
 }
 
+export default rootElement; // ✅ Добавляем экспорт, чтобы Vite корректно собрал!
 
 
-
-
- 
-  
-  
