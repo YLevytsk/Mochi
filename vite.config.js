@@ -1,4 +1,3 @@
-
 /* eslint-disable no-console */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -13,17 +12,20 @@ export default defineConfig({
     emptyOutDir: true,
     assetsDir: "assets", // ✅ Все ассеты будут в `dist/assets/`
     rollupOptions: {
-      input: "index.html", // ✅ Указываем `index.html` как главный файл
+      input: "index.html", // ✅ Главный файл - `index.html`
       output: {
-        entryFileNames: "index.js", // ✅ Файл `index.js` в `dist/`
+        entryFileNames: "index.js", // ✅ Теперь `index.js` создается в `dist/`
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
     },
   },
+  esbuild: {
+    jsx: "automatic", // ✅ Автоматически преобразовывает JSX
+  },
 });
 
-// ✅ Гарантированно создаем папку `dist/assets/`
+// ✅ Гарантированно создаем `dist/assets/`
 const distDir = path.resolve("dist");
 const assetsDir = path.join(distDir, "assets");
 
@@ -31,8 +33,8 @@ if (!fs.existsSync(assetsDir)) {
   fs.mkdirSync(assetsDir, { recursive: true });
 }
 
-// ✅ Копируем `css/`, `images/`, `components/`
-const foldersToCopy = ["css", "images", "components"];
+// ✅ Копируем `css/`, `images/`, `components/`, `js/`
+const foldersToCopy = ["css", "images", "components", "js"];
 
 foldersToCopy.forEach((folder) => {
   const sourcePath = path.resolve(folder);
@@ -47,3 +49,4 @@ foldersToCopy.forEach((folder) => {
     });
   }
 });
+
