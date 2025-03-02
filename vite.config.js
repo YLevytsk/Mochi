@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ GitHub Pages путь
+  base: process.env.NODE_ENV === "production" ? "/Mochi/" : "/", // ✅ GitHub Pages и локальный сервер
   plugins: [react()],
   resolve: {
     alias: {},
@@ -16,7 +16,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: "dist",
     rollupOptions: {
-      input: "main.jsx", // ✅ Меняем с `index.html` на `main.jsx`
+      input: "index.html",
       output: {
         entryFileNames: "index.js", // ✅ `index.js` появится в `dist/`
         chunkFileNames: "assets/[name]-[hash].js",
@@ -25,6 +25,7 @@ export default defineConfig({
     },
   },
 });
+
 
 
 
