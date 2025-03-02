@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import Navigation from "./components/Navigation"; // ✅ Теперь путь правильный!
+import Navigation from "./components/Navigation.jsx"; 
 
 const rootElement = document.getElementById("root");
+
 if (rootElement) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(
-    <>
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
       <Navigation />
-      <App />
-    </>
+    </React.StrictMode>
   );
 }
 
