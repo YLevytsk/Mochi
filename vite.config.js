@@ -1,20 +1,21 @@
 /* eslint-disable no-console */
+/* eslint-disable no-console */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import fs from "fs";
 import path from "path";
 
 export default defineConfig({
-  base: "/Mochi/", // ✅ Для GitHub Pages
+  base: "/Mochi/", // ✅ GitHub Pages требует указания имени репозитория
   plugins: [react()],
   build: {
-    outDir: "dist", 
+    outDir: "dist", // ✅ Все файлы собираются сюда
     emptyOutDir: true,
-    assetsDir: "assets", // ✅ Все файлы будут в `dist/assets/`
+    assetsDir: "assets", // ✅ Все ассеты будут в `dist/assets/`
     rollupOptions: {
-      input: "main.jsx", // ✅ Указываем главный входной файл
+      input: "index.html", // ✅ Указываем `index.html` как главный файл
       output: {
-        entryFileNames: "index.js", // ✅ Гарантированно создаем `index.js`
+        entryFileNames: "index.js", // ✅ Файл `index.js` в `dist/`
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash][extname]",
       },
@@ -22,13 +23,16 @@ export default defineConfig({
   },
 });
 
-// ✅ После сборки гарантированно копируем `css/` и `images/`
-const foldersToCopy = ["css", "images"];
+// ✅ Гарантированно создаем папку `dist/assets/`
 const distDir = path.resolve("dist");
+const assetsDir = path.join(distDir, "assets");
 
-if (!fs.existsSync(distDir)) {
-  fs.mkdirSync(distDir, { recursive: true });
+if (!fs.existsSync(assetsDir)) {
+  fs.mkdirSync(assetsDir, { recursive: true });
 }
+
+// ✅ Копируем `css/`, `images/`, `components/`
+const foldersToCopy = ["css", "images", "components"];
 
 foldersToCopy.forEach((folder) => {
   const sourcePath = path.resolve(folder);
