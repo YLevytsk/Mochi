@@ -8,9 +8,9 @@ export default defineConfig({
     react(),
     FullReload(["index.html"]), // ✅ Перезагрузка при изменении index.html
     {
-      name: "html-transform",
+      name: "fix-html-script",
       transformIndexHtml(html) {
-        return html.replace(/src="\.\/index\.jsx"/g, 'src="./index.js"');
+        return html.replaceAll('src="./index.jsx"', 'src="./index.js"'); // ✅ Принудительно заменяем ВСЕ ссылки
       },
     },
   ],
@@ -35,6 +35,7 @@ export default defineConfig({
     },
   },
 });
+
 
 
 
